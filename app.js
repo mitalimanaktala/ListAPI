@@ -2,6 +2,7 @@ import express from "express";
 import dotenv from "dotenv";
 import productRouter from "./routes/product.routes.js";
 import connectDB from "./config/db.js";
+import { errorHandler } from "./middleware/error.middleware.js";
 const app = express();
 
 dotenv.config();
@@ -14,5 +15,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api/products", productRouter);
+app.use(errorHandler);
+
 
 export default app;

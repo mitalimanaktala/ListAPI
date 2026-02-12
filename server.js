@@ -1,10 +1,11 @@
-import app from "./app.js";
-const PORT = process.env.PORT || 5000;
+import app from "./app.js"
+const PORT = process.env.PORT || 3000;
 
-app.listen(PORT, (err,data) => {    
+app.listen(PORT,(err, data) => {
     if(err){
-        console.log("Error starting server:", err);
-    } else {
-        console.log(`Server is running on port ${PORT}`);
+        console.log("Error in starting");
+    }else{
+        console.log(`Server is running at PORT ${PORT}`);
+        
     }
-});
+})

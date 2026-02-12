@@ -1,10 +1,10 @@
-import express from 'express';
+import express from "express";
+import {listProductsController ,createProductController, searchProductsController} from "../controller/product.controller.js";
 
 const router = express.Router();
 
-// Minimal product routes to allow the server to start
-router.get('/', (req, res) => {
-  res.json({ message: 'Products route' });
-});
+router.get("/", listProductsController);
+router.post("/", createProductController);
+router.get("/search", searchProductsController);
 
 export default router;
