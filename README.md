@@ -179,3 +179,231 @@ Example:
 Mitali Manaktala
 B.Tech CSE | Backend & Data Enthusiast
 GitHub: hhtps://github.com/mitalimanaktala
+# 🛒 ListAPI - Product Management REST API
+
+A RESTful API built using **Node.js, Express, and MongoDB** following a clean **MVC + Service Layer architecture**.  
+The API supports product creation, pagination, full-text search, validation, and centralized error handling.
+
+---
+
+## 🚀 Features
+
+- ✅ Create Product
+- ✅ List Products with Pagination
+- ✅ Search Products (MongoDB Text Index)
+- ✅ Mongoose Schema Validation
+- ✅ Centralized Error Handling Middleware
+- ✅ Clean MVC + Service Architecture
+- ✅ Database Seeding Script
+- ✅ Environment Configuration using dotenv
+
+---
+
+## 🏗️ Project Architecture
+
+The project follows a layered structure for better scalability and maintainability:
+
+```
+LISTAPI
+│
+├── config/              # Database connection
+├── controller/          # Request handling logic
+├── middleware/          # Error handling middleware
+├── models/              # Mongoose schema definitions
+├── routes/              # API routes
+├── service/             # Business logic layer
+├── app.js               # Express app configuration
+├── server.js            # Server entry point
+├── seed.js              # Database seeding script
+└── .env                 # Environment variables
+```
+
+### 🔄 Request Flow
+
+```
+Route → Controller → Service → Model → Database
+```
+
+---
+
+## 🛠️ Tech Stack
+
+- Node.js
+- Express.js
+- MongoDB
+- Mongoose
+- dotenv
+
+---
+
+## ⚙️ Installation & Setup
+
+### 1️⃣ Clone the Repository
+
+```
+git clone: https://github.com/mitalimanaktala/ListAPI.git
+cd listapi
+```
+
+### 2️⃣ Install Dependencies
+
+```
+npm install
+```
+
+### 3️⃣ Create a `.env` File
+
+Create a `.env` file in the root directory and add:
+
+```
+MONGO_URI=your_mongodb_connection_string
+PORT=3000
+```
+
+### 4️⃣ Start the Server
+
+```
+node server.js
+```
+
+Or (if using nodemon):
+
+```
+npm run dev
+```
+
+Server runs at:
+
+```
+http://localhost:3000
+```
+
+---
+
+## 🌱 Database Seeding
+
+To insert 25+ sample products into the database:
+
+```
+node seed.js
+```
+
+This will:
+- Delete existing products
+- Insert predefined sample products
+
+---
+
+## 📡 API Endpoints
+
+### 🔹 Base Route
+
+```
+GET /
+```
+
+Response:
+```
+Welcome to the List API
+```
+
+---
+
+### 🔹 Get All Products (Pagination)
+
+```
+GET /api/products?page=1&limit=10
+```
+
+Response:
+
+```json
+{
+  "success": true,
+  "data": [...],
+  "pagination": {
+    "currentPage": 1,
+    "totalPages": 3,
+    "totalProducts": 25,
+    "hasNextPage": true,
+    "hasPrevPage": false
+  }
+}
+```
+
+---
+
+### 🔹 Create Product
+
+```
+POST /api/products
+```
+
+Request Body:
+
+```json
+{
+  "name": "iPad Pro",
+  "category": "Electronics",
+  "price": 89999,
+  "inStock": true
+}
+```
+
+---
+
+### 🔹 Search Products
+
+```
+GET /api/products/search?q=iphone
+```
+
+Uses MongoDB full-text search on:
+- name
+- category
+
+---
+
+## 🧠 Validation Rules
+
+- **name** → Required, minimum 3 characters
+- **category** → Required
+- **price** → Required, must be greater than or equal to 0
+- **inStock** → Boolean (default: true)
+
+---
+
+## 🛡️ Error Handling
+
+Centralized error middleware handles:
+
+- Mongoose Validation Errors (400)
+- Internal Server Errors (500)
+
+Example error response:
+
+```json
+{
+  "success": false,
+  "errors": ["Product name is required"]
+}
+```
+
+---
+
+## 📌 Future Improvements
+
+- 🔐 JWT Authentication
+- 📄 Filtering & Sorting
+- 📦 Deployment (Render / Railway / AWS)
+- 🧪 Unit Testing (Jest)
+- 📊 Swagger API Documentation
+
+---
+
+## 👩‍💻 Author
+
+**Mitali Manaktala**  
+B.Tech CSE | Backend & Data Enthusiast  
+
+GitHub: https://github.com/mitalimanaktala
